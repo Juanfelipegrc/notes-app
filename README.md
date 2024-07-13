@@ -16,7 +16,7 @@ A web application for managing notes, developed with React and Vite. It allows u
 Follow these steps to set up the project locally.
 
 ### Prerequisites
-Make sure you have Node.js and npm installed.
+Make sure you have Node.js and Yarn installed.
 
 ### Steps
 1. Clone the repository
@@ -27,12 +27,12 @@ Make sure you have Node.js and npm installed.
 
 2. Install dependencies
     ```bash
-    npm install
+    yarn install
     ```
 
 3. Start the development server
     ```bash
-    npm run dev
+    yarn dev
     ```
 
 ## Usage
