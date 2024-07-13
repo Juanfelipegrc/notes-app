@@ -36,7 +36,7 @@ Make sure you have Node.js and Yarn installed.
     ```
 
 ## Usage
-Navigate to `http://localhost:3000` in your browser to see the application in action.
+Navigate to the localhost link that appears (ej: `http://localhost:$$$$`) in your browser to see the application in action.
 
 ## Dependencies
 This project uses the following main dependencies:
@@ -72,17 +72,6 @@ This project uses the following main dependencies:
 - Delete notes.
 - Automatic saving of notes.
 
-## Contributing
-Contributions are welcome! Please follow these steps to contribute:
-
-1. Fork the project.
-2. Create a new branch (`git checkout -b feature/new-feature`).
-3. Make the necessary changes and commit (`git commit -am 'Add new feature'`).
-4. Push your changes (`git push origin feature/new-feature`).
-5. Open a Pull Request.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## Contact
 Created by [Juan Felipe](https://github.com/Juanfelipegrc) - feel free to contact me if you have any questions.
