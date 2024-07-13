@@ -1,9 +1,88 @@
-# React + Vite
+# Notes App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+A web application for managing notes, developed with React and Vite. It allows users to create, edit, and delete notes efficiently.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Dependencies](#dependencies)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-"# notes-app" 
+## Installation
+Follow these steps to set up the project locally.
+
+### Prerequisites
+Make sure you have Node.js and npm installed.
+
+### Steps
+1. Clone the repository
+    ```bash
+    git clone https://github.com/Juanfelipegrc/notes-app.git
+    cd notes-app
+    ```
+
+2. Install dependencies
+    ```bash
+    npm install
+    ```
+
+3. Start the development server
+    ```bash
+    npm run dev
+    ```
+
+## Usage
+Navigate to `http://localhost:3000` in your browser to see the application in action.
+
+## Dependencies
+This project uses the following main dependencies:
+
+### Production Dependencies
+- [@cloudinary/react](https://github.com/cloudinary/cloudinary-react): Library for handling images with Cloudinary in React.
+- [@cloudinary/url-gen](https://github.com/cloudinary/js-url-gen): URL generator for Cloudinary.
+- [@emotion/react](https://emotion.sh/docs/@emotion/react): Library for handling styles in React.
+- [@emotion/styled](https://emotion.sh/docs/styled): Tool for writing styled components.
+- [@mui/icons-material](https://mui.com/components/material-icons/): Icons for Material UI.
+- [@mui/material](https://mui.com/): Material UI components.
+- [@reduxjs/toolkit](https://redux-toolkit.js.org/): Toolkit for Redux.
+- [animate.css](https://animate.style/): CSS animations library.
+- [bootstrap](https://getbootstrap.com/): CSS framework.
+- [firebase](https://firebase.google.com/): Platform for web and mobile application development.
+- [react](https://reactjs.org/): JavaScript library for building user interfaces.
+- [react-dom](https://reactjs.org/docs/react-dom.html): React package for working with the DOM.
+- [react-router-dom](https://reactrouter.com/web/guides/quick-start): Router for React applications.
+
+### Development Dependencies
+- [@types/react](https://www.npmjs.com/package/@types/react): TypeScript definitions for React.
+- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): TypeScript definitions for React DOM.
+- [@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react): Vite plugin for React.
+- [eslint](https://eslint.org/): Tool for identifying and reporting on patterns in JavaScript.
+- [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react): ESLint plugin for React.
+- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks): ESLint rules for React hooks.
+- [eslint-plugin-react-refresh](https://www.npmjs.com/package/eslint-plugin-react-refresh): ESLint plugin for React Refresh.
+- [vite](https://vitejs.dev/): Build tool for modern web projects.
+
+## Features
+- Create new notes.
+- Edit existing notes.
+- Delete notes.
+- Automatic saving of notes.
+
+## Contributing
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the project.
+2. Create a new branch (`git checkout -b feature/new-feature`).
+3. Make the necessary changes and commit (`git commit -am 'Add new feature'`).
+4. Push your changes (`git push origin feature/new-feature`).
+5. Open a Pull Request.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+Created by [Juan Felipe](https://github.com/Juanfelipegrc) - feel free to contact me if you have any questions.
