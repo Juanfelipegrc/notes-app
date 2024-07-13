@@ -36,7 +36,7 @@ Make sure you have Node.js and Yarn installed.
     ```
 
 ## Usage
-Navigate to the localhost link that appears (ej: `http://localhost:$$$$`) in your browser to see the application in action.
+Navigate to the localhost link that appears (ej: `http://localhost:3000`) in your browser to see the application in action.
 
 ## Dependencies
 This project uses the following main dependencies:
