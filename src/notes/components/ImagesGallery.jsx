@@ -1,8 +1,20 @@
-import React, { useMemo, useState } from 'react'
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { startDeleteFile } from '../../store/slices/notes/thunks';
+
+
+
 
 export const ImagesGallery = ({images}) => {
 
+    const dispatch = useDispatch();
 
+    const onDeleteFile = (id, type) => {
+        dispatch(startDeleteFile(id, type))
+    }
+
+
+    
   
   return (
     <>
@@ -12,19 +24,23 @@ export const ImagesGallery = ({images}) => {
 
             {
                 images.map(image => (
-                    <div key={image} className='item-images-gallery'>
+                    <div key={image.id} className='item-images-gallery'>
                         {
-                            image.includes('.webp') || image.includes('.png') ||
-                            image.includes('.jpg') || image.includes('.jpeg') ||
-                            image.includes('.gif') || image.includes('.svg')
+                            image.url.includes('.webp') || image.url.includes('.png') ||
+                            image.url.includes('.jpg') || image.url.includes('.jpeg') ||
+                            image.url.includes('.gif') || image.url.includes('.svg')
                             ?
-                            <img className='image-images-gallery' src={image}/>
+                            
+                            <img className='image-images-gallery' src={image.url}/>
                             :
-                            <video className='image-images-gallery' src={image} controls/>
+                            <video className='image-images-gallery' src={image.url} controls/>
 
 
                         }
                         
+                        <div className='container-delete-file'>
+                            <p onClick={() => onDeleteFile(image.id, image.type)}>Delete File</p>
+                        </div>
                     </div>
                 ))
             }

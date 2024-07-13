@@ -36,7 +36,7 @@ Make sure you have Node.js and Yarn installed.
     ```
 
 ## Usage
-Navigate to the localhost link that appears (ej: `http://localhost:3000`) in your browser to see the application in action.
+Navigate to the localhost link that appears (e.g., `http://localhost:3000`) in your browser to see the application in action.
 
 ## Dependencies
 This project uses the following main dependencies:
@@ -51,6 +51,8 @@ This project uses the following main dependencies:
 - [@reduxjs/toolkit](https://redux-toolkit.js.org/): Toolkit for Redux.
 - [animate.css](https://animate.style/): CSS animations library.
 - [bootstrap](https://getbootstrap.com/): CSS framework.
+- [cloudinary](https://cloudinary.com/documentation/node_integration): Cloudinary library for managing media.
+- [crypto-js](https://github.com/brix/crypto-js): Library for cryptographic algorithms.
 - [firebase](https://firebase.google.com/): Platform for web and mobile application development.
 - [react](https://reactjs.org/): JavaScript library for building user interfaces.
 - [react-dom](https://reactjs.org/docs/react-dom.html): React package for working with the DOM.
@@ -71,7 +73,6 @@ This project uses the following main dependencies:
 - Edit existing notes.
 - Delete notes.
 - Save notes.
-
 
 ## Contact
 Created by [Juan Felipe](https://github.com/Juanfelipegrc) - feel free to contact me if you have any questions.

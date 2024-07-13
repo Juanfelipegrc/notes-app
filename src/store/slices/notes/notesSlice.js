@@ -55,6 +55,12 @@ export const notesSlice = createSlice({
             })
         },
         
+        deleteFileById: (state, action) => {
+            state.active.imagesUrls = state.active.imagesUrls.filter(image => {
+                return image.id != action.payload
+            })
+        }
+        
     
     }
 });
@@ -69,5 +75,6 @@ export const {
     setNotes,
     setSaving,
     updateNote,
-    setPhotosToActiveNote
+    setPhotosToActiveNote,
+    deleteFileById
  } = notesSlice.actions;

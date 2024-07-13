@@ -1,9 +1,9 @@
 import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
-import { addNewEmptyNote, deleteNoteById, savingNewNote, setActiveNote, setNotes, setPhotosToActiveNote, setSaving, updateNote } from "./notesSlice"
+import { addNewEmptyNote, deleteFileById, deleteNoteById, savingNewNote, setActiveNote, setNotes, setPhotosToActiveNote, setSaving, updateNote } from "./notesSlice"
 import { FirebaseDB } from "../../../firebase/config";
 import { loadNotes } from "../../../helpers/loadNotes";
 import { fileUpload } from "../../../helpers/fileUpload";
-
+import CryptoJS from 'crypto-js'
 
 export const startNewNote = () => {
     return async(dispatch, getState) => {
@@ -70,16 +70,55 @@ export const startDeletingNote = () =>{
 
 export const startUploadingFiles = (files) => {
     return async(dispatch) => {
-        const fileUploadPromises = [];
+        const fileUploadPromisesUrls = [];
+        const fileUploadPromiseIds = [];
 
         for (const file of files) {
-            fileUploadPromises.push(
 
-                fileUpload(file)
-            )
+            const {url, id, type} = await fileUpload(file);
+            fileUploadPromisesUrls.push({url, id, type});
         }
-        const imageUrls = await Promise.all(fileUploadPromises);
+        const imageUrls = await Promise.all(fileUploadPromisesUrls);
 
+
+
+ 
         dispatch(setPhotosToActiveNote(imageUrls))
+    }
+}
+
+export const startDeleteFile = (id, type) => {
+    return async(dispatch) => {
+        const timestamp = Math.floor(new Date().getTime() / 1000);
+        const cloudName = 'juanfelipegrc';
+        const apiKey = '651647161523528'; 
+        const apiSecret = 'q3nCQ2OvxdCD_okGm8DZtXKu04g';
+
+
+
+        const stringToSign = `public_id=${id}&timestamp=${timestamp}${apiSecret}`;
+        const signature = CryptoJS.SHA1(stringToSign).toString();
+
+
+        const url = `https://api.cloudinary.com/v1_1/${cloudName}/${type}/destroy`;
+
+        try {
+            await fetch(url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                public_id: id,
+                api_key: apiKey,
+                timestamp: timestamp,
+                signature: signature,
+              }),
+            });
+        }catch(error){
+            console.log(error)
+        }
+
+        dispatch(deleteFileById(id))
     }
 }
