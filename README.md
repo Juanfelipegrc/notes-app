@@ -70,7 +70,7 @@ This project uses the following main dependencies:
 - Create new notes.
 - Edit existing notes.
 - Delete notes.
-- Automatic saving of notes.
+- Save notes.
 
 
 ## Contact
