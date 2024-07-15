@@ -70,8 +70,8 @@ export const startDeletingNote = () =>{
 
 export const startUploadingFiles = (files) => {
     return async(dispatch) => {
+        dispatch(setSaving())
         const fileUploadPromisesUrls = [];
-        const fileUploadPromiseIds = [];
 
         for (const file of files) {
 

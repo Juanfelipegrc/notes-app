@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { startLogoutFirebase } from '../../store/slices/auth/thunks';
 import { SideBarItem } from './SideBarItem';
 import { setActiveNote } from '../../store/slices/notes/notesSlice';
+
 
 export const SideBar = () => {
 
@@ -31,6 +32,23 @@ export const SideBar = () => {
 
     const [animation, setAnimation] = useState(true)
     const [hiddenSideBar, setHiddenSideBar] = useState(true)
+    const [screen, setScreen] = useState('')
+
+    const width = window.innerWidth;
+    useEffect(() => {
+
+      if(width < 1200){
+        setScreen('mobile')
+    }
+
+        if(width >= 1200){
+            setScreen('desktop')
+            setHiddenSideBar(false);
+            setAnimation(false)
+        }
+
+    }, [width])
+    
 
     
 
@@ -50,20 +68,51 @@ export const SideBar = () => {
         dispatch(startLogoutFirebase());
     }
 
- 
-    const onSetHiddenSideBar = () => {
-        setHiddenSideBar(true)
-        setAnimation(true)
-    }
+
+
+    const restBoxRef = useRef();
     
 
     const animationValidation = animation ? 'animate__animated animate__slideOutLeft' : 'animate__animated animate__slideInLeft';
+
+
+
+    useEffect(() => {
+        const onChangeHiddenBar = () => {
+            setHiddenSideBar(true)
+            setAnimation(true)
+            
+        };
+        
+        if(hiddenSideBar === false){
+            
+            const restBox = restBoxRef.current;
+            
+            restBox.addEventListener('click', onChangeHiddenBar)
+
+
+            return () => {
+                restBox.removeEventListener('click', onChangeHiddenBar)
+            }
+        }
+
+    }, [hiddenSideBar])
+
+
+    const onSetActiveNote = (note) => {
+        if(screen === 'mobile'){
+            setHiddenSideBar(true)
+            setAnimation(true)
+        }
+        dispatch(setActiveNote(note))
+    }
+    
 
   return (
     <>
         <div style={{display: hiddenSideBar? 'none' : ''}} className={`container-side-bar-page ${animation? 'animate__animated animate__fadeOut' : ''} `}>
 
-            <div className={`container-side-bar ${animationValidation}`}>
+            <div className={`container-side-bar ${ screen ==='desktop'? '' : animationValidation}`}>
 
                 <div className="container-items-side-bar">
                     <div className='container-list-notes'>
@@ -76,7 +125,7 @@ export const SideBar = () => {
                             {
                                 notes.length != 0?
                                 notes.map(note => (
-                                    <SideBarItem key={note.date} note={note} onSetHiddenSideBar={onSetHiddenSideBar}/>
+                                    <SideBarItem key={note.date} note={note} onSetActiveNote={onSetActiveNote}/>
                                 ))
                                 :<div className='no-notes'>
                                     <h3>there are no notes</h3>
@@ -88,7 +137,7 @@ export const SideBar = () => {
                     </div>
                     
                     
-                    <div className='hidden-side-bar'>
+                    <div style={{display: screen === 'mobile'? 'flex' : 'none'}} className='hidden-side-bar'>
                         <button onClick={onChangeAnimation}>
                             <ArrowBackIosNewIcon/>
                         </button>
@@ -98,12 +147,12 @@ export const SideBar = () => {
                 
 
             </div>
-            <div className='rest-box'>
+            <div ref={restBoxRef} className='rest-box'>
 
             </div>
 
         </div>
-        <div style={{display: hiddenSideBar? 'flex' : 'none'}} className={`hidden-side-bar-enter ${hiddenSideBar? 'animate__animated animate__fadeIn' : 'animate__animated animate__fadeOut'}`}>
+        <div style={{display: hiddenSideBar && screen === 'mobile'? 'flex' : 'none'}} className={`hidden-side-bar-enter ${hiddenSideBar? 'animate__animated animate__fadeIn' : 'animate__animated animate__fadeOut'}`}>
                         <button onClick={onChangeAnimation}>
                             <ArrowForwardIosIcon/>
                         </button>

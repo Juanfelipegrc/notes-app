@@ -27,6 +27,7 @@ export const notesSlice = createSlice({
 
         setPhotosToActiveNote:(state, action) => {
             state.active.imagesUrls = [...state.active.imagesUrls, ...action.payload]
+            state.isSaving = false;
         },
 
         setSaving:(state) => {

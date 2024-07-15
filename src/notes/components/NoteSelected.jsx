@@ -150,7 +150,7 @@ export const NoteSelected = () => {
             </div>
 
 
-            <div style={{display: active.imagesUrls.length > 0 ? '' : 'none'}} className='container-images-gallery'>
+            <div className='container-images-gallery'>
 
         
                 <ImagesGallery images={active.imagesUrls}/>

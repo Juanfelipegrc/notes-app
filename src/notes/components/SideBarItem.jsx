@@ -1,18 +1,15 @@
 import React, { useMemo, useState } from 'react'
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { useDispatch } from 'react-redux';
-import { setActiveNote } from '../../store/slices/notes/notesSlice';
 
-export const SideBarItem = ({note, onSetHiddenSideBar}) => {
+
+export const SideBarItem = ({note, onSetActiveNote}) => {
 
     
 
     const dispatch = useDispatch();
 
-    const onSetActiveNote = () => {
-        onSetHiddenSideBar();
-        dispatch(setActiveNote(note))
-    }
+  
 
     const newTitle = useMemo(() => {
         return note.title.length > 10
@@ -29,7 +26,7 @@ export const SideBarItem = ({note, onSetHiddenSideBar}) => {
   return (
     <>
         <li className='item-side-bar'>
-            <button onClick={onSetActiveNote}>
+            <button onClick={() => onSetActiveNote(note)}>
                 <div className='item-container-title-icon'>
                     <EditNoteIcon/>
                     <h4>{newTitle}</h4>

@@ -10,7 +10,7 @@ export const NotesPage = () => {
 
   const dispatch = useDispatch();
 
-  const {active} = useSelector(state => state.notes)
+  const {active, isSaving} = useSelector(state => state.notes)
 
   const addNewNote = () => {
     dispatch(startNewNote());
@@ -32,8 +32,9 @@ export const NotesPage = () => {
         
 
         <button
+          disabled={isSaving}
           onClick={addNewNote}
-          className='add-new-note-button'
+          className={isSaving? 'disabled-add-new-note-button' :  'add-new-note-button'}
          >
           <AddIcon/>
         </button>
