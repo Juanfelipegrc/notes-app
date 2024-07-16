@@ -64,6 +64,44 @@ export const startDeletingNote = () =>{
         const docRef = doc(FirebaseDB, `${uid}/notesapp/notes/${active.id}`)
 
         await deleteDoc(docRef);
+
+
+        const timestamp = Math.floor(new Date().getTime() / 1000);
+        const cloudName = 'juanfelipegrc';
+        const apiKey = '651647161523528'; 
+        const apiSecret = 'q3nCQ2OvxdCD_okGm8DZtXKu04g';
+
+
+
+
+        for (const image of active.imagesUrls) {
+
+
+            const stringToSign = `public_id=${image.id}&timestamp=${timestamp}${apiSecret}`;
+            const signature = CryptoJS.SHA1(stringToSign).toString();
+
+
+            const url = `https://api.cloudinary.com/v1_1/${cloudName}/${image.type}/destroy`;
+
+            try {
+                await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    public_id: image.id,
+                    api_key: apiKey,
+                    timestamp: timestamp,
+                    signature: signature,
+                }),
+                });
+            }catch(error){
+                console.log(error)
+            }
+        }
+
+
         dispatch(deleteNoteById(active.id))
     }
 }

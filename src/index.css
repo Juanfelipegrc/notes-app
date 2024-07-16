@@ -483,6 +483,7 @@ html, body{
     height: auto;
     text-wrap: wrap;
     padding-bottom: 200px;
+    resize: none;
 }
 
 .save-changes{
@@ -815,6 +816,8 @@ html, body{
         background-color: transparent;
         z-index: 1;
         border: 1px solid rgb(30, 30, 91);
+        border-bottom: 0;
+        border-top: 0;
     }
     .container-username{
         background-color: rgb(30, 30, 91);
