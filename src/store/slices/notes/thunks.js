@@ -129,6 +129,40 @@ export const startDeleteFile = (id, type) => {
     return async(dispatch) => {
         
 
+
+        const timestamp = Math.floor(new Date().getTime() / 1000);
+        const cloudName = 'juanfelipegrc';
+        const apiKey = '651647161523528'; 
+        const apiSecret = 'q3nCQ2OvxdCD_okGm8DZtXKu04g';
+
+
+        const stringToSign = `public_id=${id}&timestamp=${timestamp}${apiSecret}`;
+            const signature = CryptoJS.SHA1(stringToSign).toString();
+
+
+            const url = `https://api.cloudinary.com/v1_1/${cloudName}/${type}/destroy`;
+
+            try {
+                await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    public_id: id,
+                    api_key: apiKey,
+                    timestamp: timestamp,
+                    signature: signature,
+                }),
+                });
+            }catch(error){
+                console.log(error)
+            }
+        
+
+            
+
+
         dispatch(deleteFileById(id))
     }
 }
