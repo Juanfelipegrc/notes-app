@@ -123,6 +123,7 @@ export const NoteSelected = () => {
                             name='title'
                             onChange={onInputChange}
                             ref={inputRef}
+                            disabled={isSaving}
                         />
                         <input
                         type="file"
@@ -130,6 +131,7 @@ export const NoteSelected = () => {
                         ref={fileInputRef}
                         onChange={onFileInputChange}
                         multiple
+                        disabled={isSaving}
                         />
                     </div>
                     <div className="item-form-note-selected">
