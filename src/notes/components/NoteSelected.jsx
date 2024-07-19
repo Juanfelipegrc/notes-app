@@ -144,6 +144,7 @@ export const NoteSelected = () => {
                             name='body'
                             onChange={onInputChange}
                             ref={textArea}
+                            disabled={isSaving}
                             
                             
                         />
