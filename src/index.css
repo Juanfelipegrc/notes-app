@@ -562,12 +562,13 @@ html, body{
     margin-top: 2px;
 }
 
-.container-delete-file p {
+.container-delete-file p, a {
     color: blue;
-    text-decoration: underline;    
+    text-decoration: underline;
+    margin-right: 10px;    
 }
 
-.container-delete-file p:active {
+.container-delete-file p, a:active {
     color: #787878;
 }
 

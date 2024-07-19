@@ -49,12 +49,13 @@ export const ImagesGallery = ({images}) => {
                                 
                                 <img className='image-images-gallery' src={image.url}/>
                                 :
-                                <video className='image-images-gallery' src={image.url} controls/>
+                                <video className='image-images-gallery' src={image.url} controls controlsList='download'/>
 
 
                             }
                             
                             <div className='container-delete-file'>
+                                
                                 <p onClick={() => onDeleteFile(image.id, image.type)}>Delete File</p>
                             </div>
                         </div>
