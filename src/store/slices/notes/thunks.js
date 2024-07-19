@@ -129,7 +129,7 @@ export const startDeleteFile = (id, type) => {
     return async(dispatch) => {
         
 
-
+    
         const timestamp = Math.floor(new Date().getTime() / 1000);
         const cloudName = 'juanfelipegrc';
         const apiKey = '651647161523528'; 
@@ -153,6 +153,7 @@ export const startDeleteFile = (id, type) => {
                     api_key: apiKey,
                     timestamp: timestamp,
                     signature: signature,
+                   
                 }),
                 });
             }catch(error){

@@ -12,6 +12,7 @@ export const fileUpload = async(file) => {
     formData.append('upload_preset', 'notes-app');
     formData.append('file', file);
 
+
     try {
         const resp = await fetch(cloudUrl, {
             method: 'POST',
