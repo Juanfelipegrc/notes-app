@@ -15,6 +15,27 @@ export const ImagesGallery = ({images}) => {
         dispatch(startDeleteFile(id, type))
     }
 
+    const onDownloadFile = async (url, filename) => {
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/octet-stream',
+                },
+            });
+            const blob = await response.blob();
+            const downloadUrl = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        } catch (error) {
+            console.error('Error downloading the file', error);
+        }
+    };
+
 
     
   
@@ -49,13 +70,13 @@ export const ImagesGallery = ({images}) => {
                                 
                                 <img className='image-images-gallery' src={image.url}/>
                                 :
-                                <video className='image-images-gallery' src={image.url} controls controlsList='download'/>
+                                <video className='image-images-gallery' src={image.url} controls/>
 
 
                             }
                             
                             <div className='container-delete-file'>
-                                
+                                <p><a onClick={() => onDownloadFile(image.url, image.id)}>Download File</a></p>
                                 <p onClick={() => onDeleteFile(image.id, image.type)}>Delete File</p>
                             </div>
                         </div>
