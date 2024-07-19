@@ -11,7 +11,7 @@ import { ImagesGallery } from './ImagesGallery';
 
 export const NoteSelected = () => {
 
-    const {active} = useSelector(state => state.notes);
+    const {active, isSaving} = useSelector(state => state.notes);
 
     const [animation, setAnimation] = useState(false)
 
@@ -101,13 +101,13 @@ export const NoteSelected = () => {
         <div ref={containerRef} className={`container-note-selected ${animation? 'animate__animated animate__fadeIn' : ''}`}>
         
             <div className="save-changes">
-                <button onClick={onDeleteNote}>
+                <button disabled={isSaving} className={isSaving? 'disabled-button-note-selected' : ''}  onClick={onDeleteNote}>
                     <DeleteIcon/>
                 </button>
-                <button onClick={() => fileInputRef.current.click()}>
+                <button disabled={isSaving} className={isSaving? 'disabled-button-note-selected' : ''}  onClick={() => fileInputRef.current.click()}>
                     <FileUploadIcon/>
                 </button>
-                <button onClick={onSaveNote}>
+                <button disabled={isSaving} className={isSaving? 'disabled-button-note-selected' : ''}  onClick={onSaveNote}>
                     <SaveIcon/>
                 </button>
             </div>

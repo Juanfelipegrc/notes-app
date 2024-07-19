@@ -511,6 +511,18 @@ html, body{
     color: #787878;
 }
 
+.disabled-button-note-selected{
+    background-color: transparent;
+    border: none;
+    margin-right: 10px;
+    margin-top: 20px;
+   
+}
+
+.disabled-button-note-selected svg{
+    color: #787878;
+}
+
 
 /* IMAGES GALLERY */
 
@@ -1112,7 +1124,7 @@ html, body{
         border: none;
         margin-right: 10px;
         margin-top: 20px;
-        cursor: pointer;
+        
 
     }
     .save-changes svg{
@@ -1121,6 +1133,18 @@ html, body{
     }
 
     .save-changes button:active svg{
+        color: #787878;
+    }
+
+    .disabled-button-note-selected{
+        background-color: transparent;
+        border: none;
+        margin-right: 10px;
+        margin-top: 20px;
+        
+    }
+
+    .disabled-button-note-selected svg{
         color: #787878;
     }
 
