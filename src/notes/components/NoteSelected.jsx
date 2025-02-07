@@ -186,18 +186,8 @@ export const NoteSelected = () => {
 
         if (!isModified || !pendingAction) return; 
 
-    
-
-        console.log(lastState.active.title === '' && lastState.active.body === '' && lastState.active.imagesUrls?.length === 0 && active.title !== '' || active.body !== '' || active.imagesUrls.length !== 0())
 
 
-        console.log({
-            'LAST ACTIVE TITLE': lastState.active.title,
-            'LAST ACTIVE BODY': lastState.active.body,
-            'RECENT ACTIVE TITLE' : active.title,
-            'RECENT ACTIVE BODY' : active.body,
-
-        })
 
         const handleSwitchNote = async () => {
 
