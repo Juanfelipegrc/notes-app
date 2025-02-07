@@ -5,7 +5,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogoutFirebase } from '../../store/slices/auth/thunks';
 import { SideBarItem } from './SideBarItem';
-import { setActiveNote } from '../../store/slices/notes/notesSlice';
+import { setActiveNote, setPendingAction, setTempNote } from '../../store/slices/notes/notesSlice';
 
 
 export const SideBar = () => {
@@ -13,7 +13,7 @@ export const SideBar = () => {
     const [newName, setnewName] = useState(null)
     const dispatch = useDispatch();
     const {displayName} = useSelector(state => state.auth);
-    const {notes} = useSelector(state => state.notes);
+    const {notes, isModified} = useSelector(state => state.notes);
 
 
     useEffect(() => {
@@ -104,6 +104,13 @@ export const SideBar = () => {
             setHiddenSideBar(true)
             setAnimation(true)
         }
+
+        if(isModified){
+            dispatch(setTempNote(note));
+            dispatch(setPendingAction('setNote'));
+            return;
+        }
+
         dispatch(setActiveNote(note))
     }
     

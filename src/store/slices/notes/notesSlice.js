@@ -7,6 +7,9 @@ export const notesSlice = createSlice({
         notes: [],
         isSaving: false,
         active: null,
+        isModified: false,
+        pendingAction: null,
+        tempNote: null,
 
     },
     reducers: {
@@ -33,6 +36,19 @@ export const notesSlice = createSlice({
         setSaving:(state) => {
             state.isSaving = true;
         },
+
+        setModified:(state, {payload}) => {
+            state.isModified = payload;
+        },
+
+        setTempNote: (state, {payload}) => {
+            state.tempNote = payload;
+        },
+
+        setPendingAction:(state, {payload}) => {
+            state.pendingAction = payload;
+        },
+
         updateNote: (state, action) => {
             state.isSaving = false;
             state.notes = state.notes.map(note => {
@@ -77,5 +93,8 @@ export const {
     setSaving,
     updateNote,
     setPhotosToActiveNote,
-    deleteFileById
+    deleteFileById,
+    setModified,
+    setPendingAction,
+    setTempNote,
  } = notesSlice.actions;
